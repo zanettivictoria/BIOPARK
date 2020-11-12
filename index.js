@@ -11,7 +11,7 @@ var knex = require('knex')({
     connection: {
       host : '127.0.0.1',
       user : 'root',
-      password : 'Vic0221-',
+      password : 'password',
       database : 'biopark'
     }
   });
@@ -44,7 +44,7 @@ server.post('/agendamento', (req, res, next) => {
 server.get('/show/:id',  (req, res, next) =>  {
     const { id } = req.params;
     knex('cadastro')
-        .where('id', id)
+        .where('id_age', id)
         .first() //primeiro
         .then((dados) => {
             if(!dados) return res.send(new errs.BadRequestError('nada foi encontrado'))
