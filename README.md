@@ -5,16 +5,17 @@
 ### Commands
 
 `npm install` -- instala todos os pacotes necessários para rodar a aplicação.
+`nodemoon index.js` -- Comando para executar o código.
 
 ### Alterações necessárias para instalação e teste: 
 
-No arquivo  *#\node_modules\knex\lib\dialects\mysql\schema\columncompiler.js*
+**No arquivo:**  *#\node_modules\knex\lib\dialects\mysql\schema\columncompiler.js*
 
 Alterar a linha 7 para:
 
 `const commentEscapeRegex = /(?:<(tag)>)((?:.(?!<\/\1>))+.)(?:<\/\1>)/g // /(?<!\\)'/g;`
 
-**ATENÇÃO:** No payload de configuração do banco, coloque seu usuário e senha. Aonde tem:
+**ATENÇÃO:** No payload de configuração do banco, coloque seu **usuário** e **senha** do banco. A partir da linha 9 do arquivo principal `index.js`, aonde tem:
 ~~~javascript
 var knex = require('knex')({
     client: 'mysql',
@@ -30,7 +31,14 @@ var knex = require('knex')({
 ----
 ### Criação do banco de dados
 
-Basta rodar o script .sql que possui o nome "CreateDB.sql" no MySQL.
+Basta rodar no MySQL o script .sql que possui o nome "CreateDB.sql" que está no diretório principal do projeto.
+
+
+----
+
+## EXECUÇÃO DA API
+
+Para executar o código é necessário que você já tenha feito todas as alterações citadas acima (não esqueça da mudança no arquivo *columncompiler.js*) e que você execute no terminal da sua IDE ou no prompt de comando (dentro do diretório que possui o arquivo *index.js*) o comando **`nodemoon index.js`**.
 
 
 ----
@@ -39,14 +47,14 @@ Basta rodar o script .sql que possui o nome "CreateDB.sql" no MySQL.
 
 ### Endpoints, parametros e exemplo de payload
 
-| metodo | descrição                                             | endpoint                  | 
+| Método | Descrição                                             | Endpoint                  | 
 |--------|-------------------------------------------------------|---------------------------|
-| GET    | Visualizar todos os agendamentos cadastrados no banco | /agendamentos             |         
-| GET    | Visualizar todos os agendamentos cadastrados no banco | /visualizar/agendamento   |         
-| GET    | Visualizar um agendamento específico                  | /agendamento/id           |         
-| POST   | Criar um novo agendamento                             | /criar/agendamento        |         
-| PUT    | Atualizar um agendamento existente                    | /atualizar/agendamento/id |         
-| DELETE | Deletar um agendamento                                | /deletar/agendamento/id   |         
+| **GET**    | Visualizar todos os agendamentos cadastrados no banco | /agendamentos             |         
+| **GET**    | Visualizar todos os agendamentos cadastrados no banco | /visualizar/agendamento   |         
+| **GET**    | Visualizar um agendamento específico                  | /agendamento/id           |         
+| **POST**   | Criar um novo agendamento                             | /criar/agendamento        |         
+| **PUT**    | Atualizar um agendamento existente                    | /atualizar/agendamento/id |         
+| **DELETE** | Deletar um agendamento                                | /deletar/agendamento/id   |         
 
 
 **Payload para POST:**
@@ -61,7 +69,7 @@ Basta rodar o script .sql que possui o nome "CreateDB.sql" no MySQL.
 }
 ~~~
 
-**Payload para PUT (Atualizar agendamento)**
+**Exemplo de payload para PUT (Atualizar agendamento)**
 ~~~json
   {
     "ComunicationType": "whatsapp",
@@ -69,6 +77,7 @@ Basta rodar o script .sql que possui o nome "CreateDB.sql" no MySQL.
     "MessageToSend": "Aqui é a da BIOPARK você passou para a proxima etapa!"
 }
 ~~~
+Apenas um exemplo, é necessário enviar apenas o campo que se deseja atualizar.
 
   ### Variáveis do banco de dados:
 
