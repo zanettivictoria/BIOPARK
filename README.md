@@ -31,3 +31,13 @@ var knex = require('knex')({
     }
   });
   ~~~
+
+  ### Variáveis do banco de dados:
+
+  **NameToSend** - Destinatário;
+  **ComunicationType** - Tipo de comunicação (whastapp, email...);
+  **Contact** - Contato da pessoa (número de telefone, email);
+  **DateToSend** - Data para envio;
+  **MessageSentStatus** - Status de envio (false = não foi enviada / true = foi enviada);
+  **MessageToSend** - Mensagem a ser enviada.
+  

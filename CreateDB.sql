@@ -7,7 +7,7 @@ ComunicationType varchar(100) not NULL,
 Contact varchar(100) not NULL,
 DateToSend varchar(11) not null,
 MessageSentStatus bool not null, 
-MessageToSend varchar(20000) not NULL,
+MessageToSend varchar(15000) not NULL,
 primary key(id_age)
 );
 

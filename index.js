@@ -1,6 +1,8 @@
 const restify = require('restify');
 const errs = require('restify-errors');
 
+const rotaAgendamentos = require('./routes/agendamentos');
+
 const server = restify.createServer({
   name: 'myapp',
   version: '1.0.0'
@@ -26,14 +28,21 @@ server.listen(3000, function () {
   console.log('%s listening at %s', server.name, server.url);
 });
 
-server.get('/agendamento/total',  (req, res, next) =>  {
+server.get('/agendamentos',  (req, res, next) =>  {
+  knex('cadastro').then((dados) => {
+      res.send(dados);
+  }, next)
+
+});
+
+server.get('/visualizar/agendamento',  (req, res, next) =>  {
     knex('cadastro').then((dados) => {
         res.send(dados);
     }, next)
 
   });
 
-server.post('/agendamento', (req, res, next) => {
+server.post('/criar/agendamento', (req, res, next) => {
     knex('cadastro')
         .insert(req.body)
         .then((dados) => {
@@ -47,33 +56,33 @@ server.get('/agendamento/:id',  (req, res, next) =>  {
         .where('id_age', id)
         .first() //primeiro
         .then((dados) => {
-            if(!dados) return res.send(new errs.BadRequestError('nada foi encontrado'))
+            if(!dados) return res.send(new errs.BadRequestError('Não existe agendamento com este ID'))
             
             res.send(dados);
     }, next)
 
   });
 
-  server.put('/update/agendamento/:id',  (req, res, next) =>  {
+  server.put('/atualizar/agendamento/:id',  (req, res, next) =>  {
     const { id } = req.params;
     knex('cadastro')
         .where('id_age', id)
         .update(req.body) 
         .then((dados) => {
-            if(!dados) return res.send(new errs.BadRequestError('nada foi encontrado'))
+            if(!dados) return res.send(new errs.BadRequestError('Não existe agendamento com este ID'))
             
             res.send('Dados atualizados');
     }, next)
 
   });
 
-  server.put('/delete/agendamento/:id',  (req, res, next) =>  {
+  server.put('/deletar/agendamento/:id',  (req, res, next) =>  {
     const { id } = req.params;
     knex('cadastro')
         .where('id_age', id)
         .delete() 
         .then((dados) => {
-            if(!dados) return res.send(new errs.BadRequestError('nada foi encontrado'))
+            if(!dados) return res.send(new errs.BadRequestError('Não existe agendamento com este ID'))
             
             res.send('Dados excluídos');
     }, next)
