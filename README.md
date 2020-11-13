@@ -19,4 +19,15 @@ Alterar a linha 7 para:
 
 Basta rodar o script .sql que possui o nome "CreateDB.sql" no MySQL.
 
-**ATENÇÃO:** No payload de configuração do banco, coloque seu usuário e senha.
+**ATENÇÃO:** No payload de configuração do banco, coloque seu usuário e senha. Aonde tem:
+```
+var knex = require('knex')({
+    client: 'mysql',
+    connection: {
+      host : '127.0.0.1',
+      user : 'root',
+      password : 'password',
+      database : 'biopark'
+    }
+  });
+  ```
