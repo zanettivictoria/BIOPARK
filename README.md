@@ -35,9 +35,48 @@ var knex = require('knex')({
   ### Variáveis do banco de dados:
 
   **NameToSend** - Destinatário;
+
   **ComunicationType** - Tipo de comunicação (whastapp, email...);
+
   **Contact** - Contato da pessoa (número de telefone, email);
+
   **DateToSend** - Data para envio;
+
   **MessageSentStatus** - Status de envio (false = não foi enviada / true = foi enviada);
+
   **MessageToSend** - Mensagem a ser enviada.
-  
+
+
+  ### Endpoints, parametros e exemplo de payload
+
+
+| metodo | descrição                                             | endpoint                  | 
+|--------|-------------------------------------------------------|---------------------------|
+| GET    | Visualizar todos os agendamentos cadastrados no banco | /agendamentos             |         
+| GET    | Visualizar todos os agendamentos cadastrados no banco | /visualizar/agendamento   |         
+| GET    | Visualizar um agendamento específico                  | /agendamento/id           |         
+| POST   | Criar um novo agendamento                             | /criar/agendamento        |         
+| PUT    | Atualizar um agendamento existente                    | /atualizar/agendamento/id |         
+| DELETE | Deletar um agendamento                                | /deletar/agendamento/id   |         
+
+
+**Payload para POST:**
+~~~json
+  {
+    "NameToSend": "Wagner",
+    "ComunicationType": "email",
+    "Contact": "wagner.email@myEmail.com",
+    "DateToSend": "2020-12-31",
+    "MessageSentStatus": 0,
+    "MessageToSend": "Aqui é a da BIOPARK temos um agendamento!"
+}
+~~~
+
+**Payload para PUT (Atualizar agendamento)**
+~~~json
+  {
+    "ComunicationType": "whatsapp",
+    "Contact": "48977777777",
+    "MessageToSend": "Aqui é a da BIOPARK você passou para a proxima etapa!"
+}
+~~~

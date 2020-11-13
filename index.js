@@ -1,8 +1,6 @@
 const restify = require('restify');
 const errs = require('restify-errors');
 
-const rotaAgendamentos = require('./routes/agendamentos');
-
 const server = restify.createServer({
   name: 'myapp',
   version: '1.0.0'
