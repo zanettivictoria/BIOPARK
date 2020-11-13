@@ -15,4 +15,8 @@ Alterar a linha 7 para:
 `const commentEscapeRegex = /(?:<(tag)>)((?:.(?!<\/\1>))+.)(?:<\/\1>)/g // /(?<!\\)'/g;`
 
 
+### Criação do banco de dados
+
+Basta rodar o script .sql que possui o nome "CreateDB.sql" no MySQL.
+
 **ATENÇÃO:** No payload de configuração do banco, coloque seu usuário e senha.

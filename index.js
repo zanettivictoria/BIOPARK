@@ -26,7 +26,7 @@ server.listen(3000, function () {
   console.log('%s listening at %s', server.name, server.url);
 });
 
-server.get('/',  (req, res, next) =>  {
+server.get('/agendamento/total',  (req, res, next) =>  {
     knex('cadastro').then((dados) => {
         res.send(dados);
     }, next)
@@ -41,7 +41,7 @@ server.post('/agendamento', (req, res, next) => {
         }, next)
 });
 
-server.get('/show/:id',  (req, res, next) =>  {
+server.get('/agendamento/:id',  (req, res, next) =>  {
     const { id } = req.params;
     knex('cadastro')
         .where('id_age', id)
@@ -53,3 +53,32 @@ server.get('/show/:id',  (req, res, next) =>  {
     }, next)
 
   });
+
+  server.put('/update/agendamento/:id',  (req, res, next) =>  {
+    const { id } = req.params;
+    knex('cadastro')
+        .where('id_age', id)
+        .update(req.body) 
+        .then((dados) => {
+            if(!dados) return res.send(new errs.BadRequestError('nada foi encontrado'))
+            
+            res.send('Dados atualizados');
+    }, next)
+
+  });
+
+  server.put('/delete/agendamento/:id',  (req, res, next) =>  {
+    const { id } = req.params;
+    knex('cadastro')
+        .where('id_age', id)
+        .delete() 
+        .then((dados) => {
+            if(!dados) return res.send(new errs.BadRequestError('nada foi encontrado'))
+            
+            res.send('Dados excluídos');
+    }, next)
+
+  });
+
+
+  
