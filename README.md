@@ -20,7 +20,7 @@ Alterar a linha 7 para:
 Basta rodar o script .sql que possui o nome "CreateDB.sql" no MySQL.
 
 **ATENÇÃO:** No payload de configuração do banco, coloque seu usuário e senha. Aonde tem:
-```
+~~~javascript
 var knex = require('knex')({
     client: 'mysql',
     connection: {
@@ -30,4 +30,4 @@ var knex = require('knex')({
       database : 'biopark'
     }
   });
-  ```
+  ~~~
