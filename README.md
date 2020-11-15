@@ -1,5 +1,12 @@
 # BIOPARK
 
+## REQUISITOS DO PROJETO
+
+`node -v 8.8.1` - Site para Download: https://nodejs.org/en/blog/release/v8.8.1/
+
+`npm -v 5.4.2` -  https://www.npmjs.com/package/npm/v/5.4.2        
+
+
 ## INSTALAÇÃO PARA USAR O PROJETO
 
 ### Commands
@@ -15,6 +22,7 @@
 Alterar a linha 7 para:
 
 `const commentEscapeRegex = /(?:<(tag)>)((?:.(?!<\/\1>))+.)(?:<\/\1>)/g // /(?<!\\)'/g;`
+
 
 **ATENÇÃO:** No payload de configuração do banco, coloque seu **usuário** e **senha** do banco. A partir da linha 9 do arquivo principal `index.js`, aonde tem:
 ~~~javascript
@@ -79,6 +87,8 @@ Para executar o código é necessário que você já tenha feito todas as altera
 }
 ~~~
 Apenas um exemplo, é necessário enviar apenas o campo que se deseja atualizar.
+
+Para deletar, basta passar o ID do agendamento a ser deletado, assim como para atualizar basta passar o id do cadastro a ser atualizado e o conter no body os dados que se deseja atualizar.
 
   ### Variáveis do banco de dados:
 
