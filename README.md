@@ -4,7 +4,9 @@
 
 `node -v 8.8.1` - Site para Download: https://nodejs.org/en/blog/release/v8.8.1/
 
-`npm -v 5.4.2` -  https://www.npmjs.com/package/npm/v/5.4.2        
+`npm -v 5.4.2` -  https://www.npmjs.com/package/npm/v/5.4.2       
+
+`mySQL workbench`- https://www.mysql.com/products/workbench/
 
 
 ## INSTALAÇÃO PARA USAR O PROJETO
